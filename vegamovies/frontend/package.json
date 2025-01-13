@@ -13,13 +13,13 @@
     "vercel": "^39.2.6"
   },
   "scripts": {
-  "start": "react-scripts start",
-  "build": "react-scripts build",
-  "test": "react-scripts test",
-  "eject": "react-scripts eject",
-  "vercel-build": "vercel build",
-  "vercel-deploy": "vercel deploy --prod"
-},
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "vercel-build": "vercel build",
+    "vercel-deploy": "vercel deploy --prod"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -36,6 +36,21 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "vercel": {
+    "version": 2,
+    "builds": [
+      {
+        "src": "index.html",
+        "use": "@vercel/static-build"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "index.html"
+      }
     ]
   }
 }
