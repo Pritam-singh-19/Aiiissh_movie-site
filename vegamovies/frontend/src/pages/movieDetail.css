@@ -1,0 +1,386 @@
+/* Main container */
+.movie-detail {
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(145deg, #0f0f0f, #1c1c1c); /* Slight gradient for depth */
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 255, 255, 0.1);
+    animation: fadeIn 1.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content */
+  }
+  
+  /* Fade-in animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Headings */
+  .movie-detail h2 {
+    font-family: 'Roboto', sans-serif; /* Modern font for headings */
+    color: white;
+    font-size: 34px;
+    margin-bottom: 15px;
+    text-align: center;
+    text-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    animation: slideDown 1s ease;
+  }
+  
+  .movie-detail h3 {
+    font-family: 'Roboto Condensed', sans-serif;
+    color:yellow;
+    font-size: 24px;
+    margin: 20px 0 10px;
+    border-bottom: 1px solid  yellow;
+    padding-bottom: 5px;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Paragraphs and details */
+  .movie-detail p {
+    font-family: 'Open Sans', sans-serif; /* Clean font for body text */
+    font-size: 17px;
+    line-height: 1.8;
+    margin: 12px 0;
+    color: #e6e6e6;
+    text-align: left; /* Align text to the left */
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .movie-detail p strong {
+    color:rgb(255, 179, 0);
+    font-weight: bold;
+  }
+
+  /* Styling for the description paragraph */
+.thank-you-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ddd; /* Light gray text color for the rest of the paragraph */
+    line-height: 1.8;
+    margin: 20px auto;
+    max-width: 80%; /* Limiting width for readability */
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle text shadow for depth */
+    transition: color 0.3s ease;
+  }
+  
+  /* Styling for the word AIIISSH */
+  .thank-you-description .highlight {
+    color:darkred; /* Darker color for the word AIIISSH */
+    font-weight: bold; /* Making it bold */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    letter-spacing: 1px;
+  }
+  
+  /* Hover effect for the paragraph */
+  .thank-you-description:hover {
+    color: #fff; /* Change text color on hover */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Increase text shadow on hover */
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .thank-you-description {
+      font-size: 14px;
+      max-width: 90%; /* Adjust width for smaller screens */
+    }
+  }
+  
+  
+  /* Screenshots styling */
+  .movie-detail img {
+    display: block;
+    margin: 15px auto;
+    max-width: 100%;
+    border-radius: 12px; /* Slightly more rounded corners */
+    border: 3px solid #444;
+    box-shadow: 
+      0 6px 12px rgba(0, 0, 0, 0.6), 
+      0 0 15px rgba(255, 255, 255, 0.2),
+      inset 0 0 10px rgba(0, 0, 0, 0.4); /* Subtle inner shadow */
+    transition: 
+      transform 0.4s ease-out, 
+      border-color 0.4s ease-out, 
+      box-shadow 0.4s ease-out, 
+      filter 0.4s ease-out;
+    opacity: 1; /* Ensures the image is visible */
+  }
+  
+  .movie-detail img:hover {
+    transform: scale(1.15) rotate(2deg); /* Slightly increased scaling for emphasis */
+    border-color: #1e90ff; /* Bright blue border on hover */
+    box-shadow: 
+      0 10px 20px rgba(0, 0, 0, 0.8), 
+      0 0 30px rgba(30, 144, 255, 0.5), 
+      0 0 50px rgba(30, 144, 255, 0.4); /* Stronger glowing effect */
+    filter: brightness(1.2) saturate(1.1); /* Slightly increase brightness and saturation */
+    cursor: pointer; /* Adds a pointer cursor for interactivity */
+  }
+  
+  /* Add a fade-in effect without affecting visibility */
+  .movie-detail img.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Structured series info */
+  /* Main container */
+.movie-detail {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    background-color: #000000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Series info box */
+  .movie-detail .info-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    width: 70%; /* Increased width to make the box larger */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    text-align: left;
+  }
+  
+  .movie-detail .info-section > * {
+    margin: 0;
+    font-size: 16px;
+    color: #f5f5f5;
+  }
+  
+  .movie-detail .info-section p strong {
+    color:linear-gradient(to right, yellow, orange) 1;
+  }
+  
+  /* Optional: If you want to adjust the padding/margins of the external container */
+  .movie-detail {
+    padding: 40px;
+  }
+  
+  /* General Button Styling */
+button {
+    position: relative;
+    display: inline-block;
+    padding: 15px 50px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #ffffff; /* Bright white text */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Subtle shadow for better visibility */
+    background: darkred;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4), 0 0 15px rgba(30, 144, 255, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    margin: 20px 0;
+  }
+  
+  /* Hover Effects */
+  button:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 191, 255, 0.8);
+    background: yellow; 
+  }
+  
+  /* Glow Effect on Hover */
+  button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  
+  button:hover::before {
+    opacity: 1;
+  }
+  
+  /* Ripple Effect on Click */
+  button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    opacity: 0;
+    transition: width 0.5s ease, height 0.5s ease, opacity 0.8s ease;
+  }
+  
+  button:active::after {
+    width: 300%;
+    height: 300%;
+    opacity: 0;
+  }
+  
+  /* Link Styling Inside Buttons */
+  button a {
+    position: relative;
+    text-decoration: none;
+    color: white; /* Ensure link text is white */
+    z-index: 2;
+  }
+  
+  /* Shine Animation for Links */
+  button a span {
+    position: relative;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffffff; /* Fallback for non-supporting browsers */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Fallback for readability */
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.4));
+    -webkit-text-fill-color: transparent; /* Ensures the text itself is transparent */
+    animation: shine 2s infinite;
+  }
+  
+  
+  @keyframes shine {
+    0% {
+      background-position: -200%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+  
+  
+  /* Loading and error messages */
+  .loading, .error {
+    text-align: center;
+    margin: 25px 0;
+    font-size: 18px;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  .loading p {
+    color: #1e90ff;
+    font-style: italic;
+  }
+  
+  .error {
+    color: #ff6347;
+    font-weight: bold;
+  }
+  
+  /* Add subtle animations between sections */
+  .movie-detail > *:not(:last-child) {
+    margin-bottom: 25px;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
+  /* Enhanced hover effects for links */
+  .movie-detail a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .movie-detail a:hover {
+    color:black;
+    text-decoration: underline;
+  }
+  
+  /* Thank you message container */
+.thank-you-message {
+    text-align: center;
+    padding: 50px 30px; /* Larger padding for emphasis */
+    margin: 40px auto;
+    border-radius: 12px;
+    width: 85%; /* A bit smaller than full-width */
+    max-width: 900px;
+    position: relative;
+  
+  }
+  
+  /* Styling the heading */
+  .thank-you-message h3 {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ; 
+    font-size: 28px;
+    color: #fff;
+    font-weight: 600;
+    line-height: 1.6;
+    margin: 0;
+    letter-spacing: 1.5px;
+    position: relative;
+    z-index: 1;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 255, 255, 0.2); /* Strong text shadow for depth */
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+
+  
+  
+  
+  /* Glowing effect around the container */
+  .thank-you-message::after {
+    content: '';
+    
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseBackground 3s ease-in-out infinite alternate;
+    z-index: 0;
+  }
+  
+  /* Hover effect for the heading */
+  .thank-you-message h3:hover {
+    color: yellow; 
+    transform: scale(1.05); 
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .thank-you-message {
+      width: 90%; 
+      padding: 30px;
+    }
+  
+    .thank-you-message h3 {
+      font-size: 22px;
+    }
+  }
+  

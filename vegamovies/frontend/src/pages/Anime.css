@@ -1,0 +1,49 @@
+/* c:\Users\HP\Desktop\vegamovies3\vegamovies\frontend\src\pages\Anime.css */
+
+.anime-page {
+  padding: 20px;
+  background-color: #000; /* Set background color to black */
+  color: #fff; /* Set text color to white for better contrast */
+}
+
+.anime-page h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.movie-card {
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth animation on hover */
+}
+
+.movie-card:hover {
+  transform: scale(1.05); /* Slightly zoom the card */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow on hover */
+}
+
+.movie-card img {
+  width: 95%;
+  height: 85%;
+  object-fit: cover; /* Maintain image cover but avoid cutting parts */
+  object-position: center; /* Center the image */
+  border-radius: 8px; /* Optional, for rounded corners */
+  border: 5px solid transparent; /* Set transparent border */
+  border-image: linear-gradient(to right, yellow, orange) 1; /* Apply linear gradient as border */
+}
+
+
+
+.movie-card h3 {
+  margin: 10px 0;
+  font-size: 1rem;
+}

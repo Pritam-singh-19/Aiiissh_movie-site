@@ -1,0 +1,26 @@
+.alert-banner {
+  background-color: yellow; /* Set background color to yellow */
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+  color: #000;
+  margin: 0px;
+  font-weight: bold;
+  overflow: hidden; /* Hide overflow */
+  position: relative; /* Position relative for stacking context */
+  z-index: 1; /* Ensure it appears above the video */
+}
+.alert-text {
+  display: inline-block; /* Allow the text to move */
+  white-space: nowrap; /* Prevent text from wrapping */
+  animation: move 12s linear infinite; /* Animation for moving effect */
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(100%); /* Start from right */
+  }
+  100% {
+    transform: translateX(-100%); /* Move to left */
+  }
+}
