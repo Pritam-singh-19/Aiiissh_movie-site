@@ -20,6 +20,9 @@
     "vercel-build": "vercel build",
     "vercel-deploy": "vercel deploy --prod"
   },
+  "build": {
+    "outputDirectory": "build"
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
