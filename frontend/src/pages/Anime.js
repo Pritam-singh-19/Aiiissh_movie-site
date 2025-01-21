@@ -6,12 +6,18 @@ const Anime = () => {
   const [animeMovies, setAnimeMovies] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/movies?category=Anime") // Filter by Bollywood category
+ 
+
+ useEffect(() => {
+    const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
+    const endpoint = "/api/movies?category=Anime"; // Define endpoint separately
+    
+    fetch(`${baseURL}${endpoint}`) // Combine base URL and endpoint
       .then((res) => res.json())
-      .then((data) => setAnimeMovies(data))
+      .then((data) => setAnimeMovies(data)) // Set bollywoodMovies state
       .catch((err) => console.error(err));
   }, []);
+  
 
   const openMoviePage = (movie) => {
     navigate(`/movie/${movie._id}`); // Pass the movie._id to the route

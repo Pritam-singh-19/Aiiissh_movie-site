@@ -7,12 +7,14 @@ const MovieDetail = () => {
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/movies/${id}`)
+    const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
+    fetch(`${baseURL}/api/movies/${id}`) // Combine base URL with endpoint
       .then((res) => res.json())
       .then((data) => setMovie(data))
       .catch((err) => console.error(err));
   }, [id]);
-
+  
+  
   return (
     <div className="movie-detail">
       <h2>{movie.heading}</h2>

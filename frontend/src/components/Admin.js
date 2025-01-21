@@ -43,12 +43,14 @@ function Admin() {
     if (!isAuthenticated && !localStorage.getItem('isLoggedIn')) {
       navigate('/login');
     } else {
-      fetch("http://localhost:5000/api/movies")
+      const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
+      fetch(`${baseURL}/api/movies`) // Combine base URL with endpoint
         .then((res) => res.json())
         .then((data) => setMovies(data))
         .catch((err) => console.error(err));
     }
   }, [isAuthenticated, navigate]);
+  
 
   const handleSearch = (e) => {
     e.preventDefault();

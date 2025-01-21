@@ -10,8 +10,8 @@ function SearchResults() {
 
   useEffect(() => {
     if (query) {
-      // Fetch movies based on the search query
-      fetch(`http://localhost:5000/api/movies/search?query=${query}`)
+      const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
+      fetch(`${baseURL}/api/movies/search?query=${query}`) // Combine base URL with endpoint
         .then((res) => res.json())
         .then((data) => {
           setSearchResults(data);
@@ -23,6 +23,7 @@ function SearchResults() {
         });
     }
   }, [query]);
+  
 
   const handleMovieClick = (movieId) => {
     navigate(`/movie/${movieId}`);
