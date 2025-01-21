@@ -40,20 +40,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "vercel": {
-    "version": 2,
-    "builds": [
-      {
-        "src": "index.html",
-        "use": "@vercel/static-build"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "index.html"
-      }
-    ]
   }
+ 
 }

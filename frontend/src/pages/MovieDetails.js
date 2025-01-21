@@ -18,13 +18,13 @@ const MovieDetail = () => {
       <h2>{movie.heading}</h2>
       <p>{movie.description}</p>
 
-      <p class="thank-you-description">
-        <span class="highlight">AIIISSH</span> is the best online platform for downloading Hollywood and Bollywood Movies. We provide direct G-Drive download link for fast and secure downloading. Click on the download button below and follow the steps to start download.
+      <p className="thank-you-description">
+        <span className="highlight">AIIISSH</span> is the best online platform for downloading Hollywood and Bollywood Movies. We provide direct G-Drive download link for fast and secure downloading. Click on the download button below and follow the steps to start download.
       </p>
 
-      <div class="movie-detail">
+      <div className="movie-detail">
         <h3>Series Info :</h3>
-        <div class="info-section">
+        <div className="info-section">
           {movie.title && <p><strong>Series Name:</strong> {movie.title}</p>}
           {movie.season && <p><strong>Season:</strong> {movie.season}</p>}
           {movie.episodes && <p><strong>Episodes:</strong> {movie.episodes}</p>}
@@ -40,7 +40,7 @@ const MovieDetail = () => {
       <h3>Series-SYNOPSIS/PLOT :</h3>
       <p> {movie.moviedescription}</p>
       <h3>Screenshots: (Must See Before Downloading)… :</h3>
-      <div class="screenshot-container">
+      <div className="screenshot-container">
         {movie.ss1 && <img src={movie.ss1} alt="Screenshot 1" />}
         {movie.ss2 && <img src={movie.ss2} alt="Screenshot 2" />}
         {movie.ss3 && <img src={movie.ss3} alt="Screenshot 3" />}
@@ -102,7 +102,7 @@ const MovieDetail = () => {
 
       <h3>Winding Up ❤️</h3>
 
-      <div class="thank-you-message">
+      <div className="thank-you-message">
         <h3>Thank you for visiting AIIISSH, the perfect spot for HD Bollywood movies & TV series download. So please keep downloading & keep sharing. Enjoy!</h3>
       </div>
     </div>
