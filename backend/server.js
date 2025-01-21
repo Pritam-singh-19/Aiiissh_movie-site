@@ -5,7 +5,19 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+
+// CORS configuration to allow the specific frontend origin
+const allowedOrigins = ['https://aiiissh.netlify.app'];
+app.use(cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(bodyParser.json());
 
 // MongoDB connection
@@ -135,13 +147,14 @@ app.put("/api/movies/:id", async (req, res) => {
   try {
     const movieId = req.params.id;
     const updatedMovie = await Movie.findByIdAndUpdate(movieId, req.body, { new: true });
-    if (!updatedMovie) {    return res.status(404).json({ message: "Movie not found" });
+    if (!updatedMovie) {    
+      return res.status(404).json({ message: "Movie not found" });
+    }
+    res.json({ message: "Movie updated successfully", movie: updatedMovie });
+  } catch (err) {
+    console.error("Error updating movie:", err);
+    res.status(500).json({ message: "Server error" });
   }
-  res.json({ message: "Movie updated successfully", movie: updatedMovie });
-} catch (err) {
-  console.error("Error updating movie:", err);
-  res.status(500).json({ message: "Server error" });
-}
 });
 
 // Delete movie
