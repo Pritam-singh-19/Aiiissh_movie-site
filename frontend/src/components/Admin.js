@@ -43,8 +43,10 @@ function Admin() {
     if (!isAuthenticated && !localStorage.getItem('isLoggedIn')) {
       navigate('/login');
     } else {
-      const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
-      fetch(`${baseURL}/api/movies`) // Combine base URL with endpoint
+      const baseURL = process.env.REACT_APP_API_URL; // Get base URL from .env
+      // Adjusted fetch URL to avoid duplicated 'api' in the path
+      // Assuming REACT_APP_API_URL includes '/api' already
+      fetch(`${baseURL}/movies`)
         .then((res) => res.json())
         .then((data) => setMovies(data))
         .catch((err) => console.error(err));

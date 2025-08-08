@@ -7,8 +7,8 @@ const Anime = () => {
   const navigate = useNavigate();
 
  useEffect(() => {
-    const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
-    const endpoint = "/api/movies?category=Hindi-Web-Series"; // Define endpoint separately
+     const baseURL = process.env.REACT_APP_API_URL;
+    const endpoint = "/movies?category=Hindi-Web-Series"; // Define endpoint separately
     
     fetch(`${baseURL}${endpoint}`) // Combine base URL and endpoint
       .then((res) => res.json())

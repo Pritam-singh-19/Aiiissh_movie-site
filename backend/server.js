@@ -6,8 +6,9 @@ require("dotenv").config();
 
 const app = express();
 
-// CORS configuration to allow the specific frontend origin
-const allowedOrigins = ['https://aiiissh.netlify.app'];
+/// CORS configuration to allow the specific frontend origin
+const allowedOrigins = ['https://aiiissh.netlify.app', 'http://localhost:3000'];
+
 app.use(cors({
   origin: (origin, callback) => {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
@@ -17,6 +18,7 @@ app.use(cors({
     }
   }
 }));
+
 
 app.use(bodyParser.json());
 
@@ -63,18 +65,27 @@ const Movie = mongoose.model("Movie", movieSchema);
 // API endpoints
 app.get('/api/movies/search', (req, res) => {
   const query = req.query.query;
+  console.log("Search query:", query);
   Movie.find({ title: { $regex: query, $options: 'i' } })
-    .then(movies => res.json(movies))
-    .catch(err => res.status(400).send('Error fetching movies'));
+    .then(movies => {
+      console.log(`Found ${movies.length} movies for search query: ${query}`);
+      res.json(movies);
+    })
+    .catch(err => {
+      console.error("Error fetching movies for search:", err);
+      res.status(400).send('Error fetching movies');
+    });
 });
 
 // Get all movies
 app.get("/api/movies", async (req, res) => {
   const { category } = req.query;
+  console.log("Category query:", category);
   try {
     const movies = category
       ? await Movie.find({ category })
       : await Movie.find(); // Return all movies if no category is provided
+    console.log(`Found ${movies.length} movies for category: ${category}`);
     res.json(movies);
   } catch (err) {
     console.error("Error fetching movies:", err);

@@ -51,8 +51,11 @@ function Hero() {
       </header>
 
       {/* Hero Content */}
+      <div className="Hero-heading">
       <h1>Find your interest here</h1>
       <p>Your one-stop destination for movies and web series.</p>
+      </div>
+      <div className="hero-content"></div>
       <div className="search-bar">
         <input
           type="text"

@@ -10,9 +10,18 @@ function SearchResults() {
 
   useEffect(() => {
     if (query) {
-      const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
-      fetch(`${baseURL}/api/movies/search?query=${query}`) // Combine base URL with endpoint
-        .then((res) => res.json())
+      const baseURL = process.env.REACT_APP_API_URL; 
+      const endpoint = "/movies/search?query=" + encodeURIComponent(query);
+
+      console.log("Fetch URL:", baseURL + endpoint);
+
+      fetch(baseURL + endpoint)
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+          }
+          return res.json();
+        })
         .then((data) => {
           setSearchResults(data);
           setLoading(false);
@@ -20,10 +29,10 @@ function SearchResults() {
         .catch((err) => {
           setError("Failed to fetch search results.");
           setLoading(false);
+          console.error("Fetch error:", err);
         });
     }
   }, [query]);
-  
 
   const handleMovieClick = (movieId) => {
     navigate(`/movie/${movieId}`);
@@ -33,13 +42,10 @@ function SearchResults() {
     <div>
       <h1>Search Results for "{query}"</h1>
 
-      {/* Show loading state */}
       {loading && <p>Loading results...</p>}
 
-      {/* Show error if any */}
       {error && <p>{error}</p>}
 
-      {/* Display search results */}
       <div className="movies-grid">
         {searchResults.length > 0 ? (
           searchResults.map((movie) => (
@@ -54,7 +60,7 @@ function SearchResults() {
             </div>
           ))
         ) : (
-          <p>No movies found for your search.</p>
+          !loading && <p>No movies found for your search.</p>
         )}
       </div>
     </div>

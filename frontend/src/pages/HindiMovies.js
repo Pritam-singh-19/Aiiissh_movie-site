@@ -9,8 +9,8 @@ const Bollywood = () => {
   const location = useLocation(); // Access the query parameters
 
  useEffect(() => {
-    const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
-    const endpoint = "/api/movies?category=Bollywood"; // Define endpoint separately
+      const baseURL = process.env.REACT_APP_API_URL;
+    const endpoint = "/movies?category=Bollywood"; // Define endpoint separately
     
     fetch(`${baseURL}${endpoint}`) // Combine base URL and endpoint
       .then((res) => res.json())

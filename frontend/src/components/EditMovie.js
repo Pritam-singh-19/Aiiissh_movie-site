@@ -9,8 +9,8 @@ const EditMovie = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const baseURL = process.env.REACT_APP_API_BASE_URL; // Get base URL from .env
-    fetch(`${baseURL}/api/movies/${id}`) // Combine base URL with endpoint
+    const baseURL = process.env.REACT_APP_API_URL; 
+    fetch(`${baseURL}/movies/${id}`)
       .then((res) => res.json())
       .then((data) => setMovie(data))
       .catch((err) => setError(`Error fetching movie details: ${err.message}`));

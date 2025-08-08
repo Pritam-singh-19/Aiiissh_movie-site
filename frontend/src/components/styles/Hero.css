@@ -1,3 +1,4 @@
+/* Hero Section */
 .hero {
   position: relative;
   padding: 20px;
@@ -6,14 +7,8 @@
   z-index: 1;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+.hero-heading {
+  margin-bottom: 10px; /* Reduced space before the paragraph */
 }
 
 .hero h1 {
@@ -24,6 +19,18 @@
 .hero p {
   font-size: 20px;
   color: white;
+  margin-top: -20px; /* Reduced space above the paragraph */
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
@@ -76,6 +83,7 @@
   background-color: #2980b9;
 }
 
+/* Search Bar */
 .search-bar {
   display: flex;
   justify-content: center;
@@ -85,19 +93,20 @@
 }
 
 .search-bar input {
-  padding: 10px;
-  font-size: 1rem;
-  width: 50%;
+  padding: 6px;
+  font-size: 0.9rem;
+  width: 25%; /* Adjusted width */
   background-color: transparent;
   color: white;
   border: 1px solid #555;
   border-radius: 5px;
   z-index: 2;
+  height: 35px; /* Reduced height */
 }
 
 .search-bar button {
-  padding: 10px 20px;
-  font-size: 1rem;
+  padding: 6px 14px;
+  font-size: 0.9rem;
   background-color: yellow;
   color: black;
   border: none;
@@ -111,22 +120,27 @@
   color: white;
 }
 
+/* Categories */
 .categories {
   position: relative;
   z-index: 2;
   margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap; /* Allow buttons to wrap to next line */
+  justify-content: center; /* Center buttons */
+  gap: 8px; /* Reduced gap between buttons */
 }
 
 .category-button {
-  margin: 10px;
-  padding: 10px 20px;
+  font-size: 0.85rem; /* Smaller font size */
+  padding: 8px 14px; /* Reduced padding */
+  margin: 5px; /* Reduced margin between buttons */
   border: none;
   cursor: pointer;
   border-radius: 5px;
   transition: 0.3s ease;
   background-color: darkred;
   color: white;
-  font-size: 1rem;
   z-index: 2;
 }
 
@@ -158,4 +172,87 @@
 .category-selector:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Mobile Responsiveness - Media Queries for Mobile View */
+@media (max-width: 600px) {
+  /* Header adjustments */
+  .header {
+    flex-direction: row; /* Keep the items in a row */
+    justify-content: space-between; /* Space out the items to left and right */
+    align-items: center; /* Align items in the center vertically */
+    padding: 10px;
+  }
+
+  /* Adjust logo to be on the left */
+  .logo {
+    order: 0; /* Keep logo in the leftmost position */
+  }
+
+  /* Adjust dropdown to be on the right */
+  .dropdown-button {
+    order: 1; /* Keep dropdown on the right */
+    font-size: 1.5rem; /* Adjust font size for mobile */
+    padding: 0px 20px;
+    margin-top: 0;
+  }
+
+  /* Additional mobile adjustments for header */
+  .dropdown-content {
+    margin-top: 5px; /* Adjust the dropdown menu's margin */
+    margin-left: 0; /* Adjust left margin for the dropdown */
+  }
+
+  /* Adjust logo size */
+  .Aiiissh {
+    width: 90px; /* Smaller logo for mobile */
+  }
+
+  /* Adjust header text size */
+  .hero h1 {
+    font-size: 28px; /* Smaller font size for header */
+  }
+
+  .hero p {
+    font-size: 16px; /* Smaller font size for description */
+  }
+
+  /* Adjust space between heading and paragraph */
+  .hero-heading {
+    margin-bottom: -20px; /* Reduced space between heading and paragraph */
+  }
+
+  /* Search box adjustments */
+  .search-bar input {
+    font-size: 0.9rem;
+    width: 70%; /* Increase input width to better fit on mobile */
+    padding: 6px;
+    height: 35px; /* Decreased height */
+  }
+
+  .search-bar button {
+    font-size: 0.9rem;
+    padding: 6px 14px;
+  }
+
+  /* Category button adjustments */
+  .category-button {
+    font-size: 0.85rem; /* Reduced font size for mobile */
+    padding: 8px 14px;
+    margin: 5px;
+  }
+
+  /* Adjust background video for mobile */
+  .background-video {
+    object-fit: cover;
+    object-position: center;
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Adjust category selector */
+  .category-selector {
+    font-size: 0.9rem;
+    width: 80%; /* Increase width for better fit on mobile */
+  }
 }
