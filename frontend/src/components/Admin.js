@@ -38,12 +38,13 @@ function Admin() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  // Get base URL from .env - defined at component level so all functions can use it
+  const baseURL = process.env.REACT_APP_API_URL;
   
   useEffect(() => {
     if (!isAuthenticated && !localStorage.getItem('isLoggedIn')) {
       navigate('/login');
     } else {
-      const baseURL = process.env.REACT_APP_API_URL; // Get base URL from .env
       // Adjusted fetch URL to avoid duplicated 'api' in the path
       // Assuming REACT_APP_API_URL includes '/api' already
       fetch(`${baseURL}/movies`)

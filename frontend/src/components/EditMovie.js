@@ -8,8 +8,10 @@ const EditMovie = () => {
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const baseURL = process.env.REACT_APP_API_URL; 
+  // Get base URL from .env - defined at component level so all functions can use it
+  const baseURL = process.env.REACT_APP_API_URL;
+
+  useEffect(() => { 
     fetch(`${baseURL}/movies/${id}`)
       .then((res) => res.json())
       .then((data) => setMovie(data))
