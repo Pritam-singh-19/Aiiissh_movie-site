@@ -101,7 +101,7 @@ function Admin() {
       downloadLink7,
     };
 
-    fetch("http://localhost:5000/api/movies", {
+    fetch(`${baseURL}/movies`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newMovie),
@@ -148,7 +148,7 @@ function Admin() {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/api/movies/${id}`, {
+    fetch(`${baseURL}/movies/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -23,7 +23,7 @@ const EditMovie = () => {
     setSuccess("");
 
     // API call to update the movie
-    fetch(`http://localhost:5000/api/movies/${id}`, {
+    fetch(`${baseURL}/movies/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(movie),
