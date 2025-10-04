@@ -6,29 +6,38 @@ require("dotenv").config();
 
 const app = express();
 
-/// CORS configuration to allow the specific frontend origin
-const allowedOrigins = ['https://aiiissh.netlify.app', 'http://localhost:3000'];
+// CORS configuration: read allowed origins from environment or fall back to common values
+const allowedOriginsEnv = process.env.ALLOWED_ORIGINS; // comma-separated list or '*'
+const allowedOrigins = allowedOriginsEnv
+  ? allowedOriginsEnv.split(',').map(s => s.trim()).filter(Boolean)
+  : ['http://localhost:3000'];
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
+    // allow requests with no origin (like curl, Postman, or server-to-server)
+    if (!origin) return callback(null, true);
+    // if ALLOWED_ORIGINS is set to '*', allow all origins
+    if (allowedOriginsEnv === '*') return callback(null, true);
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      return callback(null, true);
     }
+    return callback(new Error('Not allowed by CORS'));
   }
 }));
-
 
 app.use(bodyParser.json());
 
 // MongoDB connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://pritamsing1906:Pritam1903@cluster0.z5rhx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+// IMPORTANT: remove any hard-coded credentials and set MONGO_URI in Render's environment
+const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/aiiissh';
+if (!process.env.MONGO_URI) {
+  console.warn('MONGO_URI not set in environment. Falling back to local MongoDB at', MONGO_URI);
+}
 
 mongoose
   .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("Connected to MongoDB"))
-  .catch((err) => console.error("Failed to connect to MongoDB:", err));
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Failed to connect to MongoDB:', err));
 
 // Movie schema and model
 const movieSchema = new mongoose.Schema({
@@ -182,4 +191,7 @@ app.delete("/api/movies/:id", async (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+// Health check route for Render (and for quick checks)
+app.get('/', (req, res) => res.send('OK'));
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
